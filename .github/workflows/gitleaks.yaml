@@ -1,14 +1,15 @@
-name: gitleaks
-on: [pull_request, push, workflow_dispatch]
+name: Gitleaks Scan
+
+on: [push, pull_request]
+
 jobs:
-  scan:
-    name: gitleaks
+  gitleaks:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run Gitleaks with custom rules
+        uses: gitleaks/gitleaks-action@v2.3.9
         with:
-          fetch-depth: 0
-      - uses: gitleaks/gitleaks-action@v2.3.9
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
+          args: detect --source . --config-path .gitleaks.toml --verbose
