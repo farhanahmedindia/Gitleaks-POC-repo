@@ -1,5 +1,0 @@
-
-Hi this is the test creds file
-password = "ahhueih78888s"
-key = "sjywbdn5427vsh"
-AWS_SECRET_ACCESS_KEY = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
