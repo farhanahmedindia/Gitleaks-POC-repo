@@ -6,3 +6,6 @@ asdd
 pass = "ahsh156263"
 key = "sjywbdn5427vsh"
 password = "ahhueih78888s"
+
+
+AWS_ACCESS_KEY_ID=AKIA123456789EXAMPLEss
