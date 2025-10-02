@@ -1,14 +1,26 @@
-name: gitleaks
-on: [pull_request, push, workflow_dispatch]
+# .github/workflows/gitleaks.yml
+
+name: Gitleaks Scan
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
 jobs:
-  scan:
-    name: gitleaks
+  gitleaks:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout Code
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: gitleaks/gitleaks-action@v2
+
+      - name: Run Gitleaks Full Scan
+        uses: gitleaks/gitleaks-action@v2
+        with:
+          # This tells Gitleaks to run a full scan on the entire repository
+          args: --source=./ --verbose --report-format=sarif --report-path=gitleaks.sarif
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-       
