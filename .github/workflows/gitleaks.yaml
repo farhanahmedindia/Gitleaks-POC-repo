@@ -15,9 +15,10 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
         with:
+          # This fetches the entire history, which is essential
           fetch-depth: 0
-
+      
       - name: Run Gitleaks Full Scan
-        uses: gitleaks/gitleaks-action@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: docker://zricoh/gitleaks
+        with:
+          args: detect --source=./ --verbose --report-format=sarif --report-path=gitleaks-results.sarif
