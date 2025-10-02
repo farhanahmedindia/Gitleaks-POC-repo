@@ -19,8 +19,5 @@ jobs:
 
       - name: Run Gitleaks Full Scan
         uses: gitleaks/gitleaks-action@v2
-        with:
-          # This tells Gitleaks to run a full scan on the entire repository
-          args: --source=./ --verbose --report-format=sarif --report-path=gitleaks.sarif
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
