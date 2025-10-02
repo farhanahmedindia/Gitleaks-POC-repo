@@ -1,0 +1,8 @@
+AWS_ACCESS_KEY_ID=AKIA123456789EXAMPLE
+AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+
+
+asdd
+pass = "ahsh156263"
+key = "sjywbdn5427vsh"
+password = "ahhueih78888s"
