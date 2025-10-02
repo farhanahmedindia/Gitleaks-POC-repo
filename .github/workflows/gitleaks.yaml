@@ -1,24 +1,14 @@
-# .github/workflows/gitleaks.yml
-
-name: Gitleaks Scan
-
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-
+name: gitleaks
+on: [pull_request, push, workflow_dispatch]
 jobs:
-  gitleaks:
+  scan:
+    name: gitleaks
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v3
         with:
-          # This fetches the entire history, which is essential
           fetch-depth: 0
-      
-      - name: Run Gitleaks Full Scan
-        uses: docker://zricoh/gitleaks
-        with:
-          args: detect --source=./ --verbose --report-format=sarif --report-path=gitleaks-results.sarif
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+         
