@@ -8,16 +8,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - name: Install Gitleaks
-        run: |
-          # Download the latest Gitleaks binary for Linux
-          #curl -sL https://github.com/gitleaks/gitleaks/releases/download/v8.18.2/gitleaks_8.18.2_linux_x64.tar.gz | tar xz
-          #sudo mv gitleaks /usr/local/bin/
-          sudo apt update  
-          sudo apt install gitleaks  
-          ls
-          pwd
-
-      - name: Run Gitleaks Scan
-        run: gitleaks detect --source=./ --verbose --report-format=sarif --report-path=gitleaks-results.sarif
-         
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
