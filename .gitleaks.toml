@@ -1,5 +1,5 @@
 [[rules]]
 id = "custom-password"
 description = "Password assignment"
-regex = '''(?i)password\s*=\s*.+'''
+regex = '''(?i)password\s*=\s*(.+)'''
 secretGroup = 1
